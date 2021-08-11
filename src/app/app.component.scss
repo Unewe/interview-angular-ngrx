@@ -1,0 +1,16 @@
+header {
+  background-color: darkgrey;
+  display: flex;
+  align-items: center;
+
+  a {
+    margin-left: 20px;
+    text-decoration: none;
+    color: white;
+
+    &.active-link {
+      color: blue;
+      text-decoration: underline;
+    }
+  }
+}
