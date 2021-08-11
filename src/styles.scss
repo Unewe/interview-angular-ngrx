@@ -17,3 +17,25 @@ main {
   flex: 1;
   padding: 20px;
 }
+
+app-users {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+
+  & div {
+    padding: 0 10px;
+    line-height: 30px;
+    min-width: 400px;
+    cursor: pointer;
+  }
+
+  .delete {
+    float: right;
+
+    &:hover {
+      background-color: red;
+      color: white;
+    }
+  }
+}

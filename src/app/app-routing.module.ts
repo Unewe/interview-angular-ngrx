@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import {HomeComponent} from "./components/home/home.component";
-import {JsQuestionsComponent} from "./components/js-questions/js-questions.component";
-import {RxjsQuestionsComponent} from "./components/rxjs-questions/rxjs-questions.component";
-import {NgrxQuestionsComponent} from "./components/ngrx-questions/ngrx-questions.component";
+import {HomeComponent} from "./pages/home/home.component";
+import {JsQuestionsComponent} from "./pages/js-questions/js-questions.component";
+import {RxjsQuestionsComponent} from "./pages/rxjs-questions/rxjs-questions.component";
+import {NgrxQuestionsComponent} from "./pages/ngrx-questions/ngrx-questions.component";
 
 const routes: Routes = [
   { path: 'home', component: HomeComponent, pathMatch: 'full',  },
