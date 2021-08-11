@@ -11,6 +11,9 @@ export class UsersService {
   constructor() {
   }
 
+  /**
+   * Fake service.
+   */
   getUsers() {
     const users: Array<User> = [
       {age: 20, name: "Michael"},
