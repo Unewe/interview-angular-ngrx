@@ -14,10 +14,10 @@ export const initialUserState: UserState = {
 
 export const userReducer = createReducer(
   initialUserState,
-  on(UserActions.createUser, (state, user) => {
+  on(UserActions.createUser, (state, { user }) => {
     return {...state, users: [...state.users, {...user, id: state.users.length + 1}]};
   }),
-  on(UserActions.updateUser, (state, user) => {
+  on(UserActions.updateUser, (state, { user }) => {
     const users = [...state.users];
     const targetUser = users.find(value => value.id === user.id);
 
@@ -38,9 +38,9 @@ export const userReducer = createReducer(
 
     return {...state, users};
   }),
-  on(UserActions.selectUser, (state, payload) => {
+  on(UserActions.selectUser, (state, {id}) => {
     const users = [...state.users];
-    const currentUser = users.find(value => value.id === payload.id);
+    const currentUser = users.find(value => value.id === id);
     return {...state, currentUser};
   }),
   on(UserActions.addAllUser, (state, payload) => {

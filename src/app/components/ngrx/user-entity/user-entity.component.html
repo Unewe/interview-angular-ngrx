@@ -1,0 +1,12 @@
+<ng-container *ngFor="let user of users$ | async">
+  <ng-container *ngTemplateOutlet="userTemplate; context: user"></ng-container>
+</ng-container>
+
+<button (click)="getUsers()">Get Users</button>
+
+<ng-template #userTemplate let-name="name" let-age="age" let-id="id">
+  <div [class.active]="currentUserId === id" (click)="selectUser(id)" class="list-item">
+    <span>{{name}}, {{age}}</span>
+    <span class="delete" *ngIf="currentUserId === id" (click)="delete(id)">Delete</span>
+  </div>
+</ng-template>

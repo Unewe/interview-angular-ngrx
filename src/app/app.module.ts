@@ -12,8 +12,11 @@ import * as fromUser from "./store/users/user.reducer"
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import { UsersComponent } from './components/ngrx/users/users.component';
 import {CommonModule} from '@angular/common';
-import {EffectsModule, USER_PROVIDED_EFFECTS} from "@ngrx/effects";
+import {EffectsModule} from "@ngrx/effects";
 import {UserEffects} from "./store/users/user.effects";
+import * as fromUserEntity from "./store/user-entity/user-entity.reducer";
+import {UserEntityEffects} from "./store/user-entity/user-entity.effects";
+import { UserEntityComponent } from './components/ngrx/user-entity/user-entity.component';
 
 @NgModule({
   declarations: [
@@ -22,14 +25,15 @@ import {UserEffects} from "./store/users/user.effects";
     JsQuestionsComponent,
     RxjsQuestionsComponent,
     NgrxQuestionsComponent,
-    UsersComponent
+    UsersComponent,
+    UserEntityComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({usersState: fromUser.userReducer}),
-    EffectsModule.forRoot([UserEffects]),
+    StoreModule.forRoot({usersState: fromUser.userReducer, userEntityState: fromUserEntity.userEntityReducer}),
+    EffectsModule.forRoot([UserEffects, UserEntityEffects]),
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       autoPause: true,

@@ -6,6 +6,7 @@ import {UserState} from "../../../store/users/user.reducer";
 import {createUser, deleteUser, getUsers, selectUser} from "../../../store/users/user.actions";
 import {filter} from "rxjs/operators";
 import {User} from "../../../models/user";
+import {AppState} from "../../../store/app.state";
 
 @Component({
   selector: 'app-users',
@@ -18,7 +19,7 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private readonly store: Store<{usersState: UserState}>
+    private readonly store: Store<AppState>
   ) {}
 
   ngOnInit() {
@@ -26,12 +27,11 @@ export class UsersComponent implements OnInit {
       this.currentUser = value
     });
 
-    this.store.dispatch(createUser({age: 44, name: "Fernando"}));
-    this.store.dispatch(createUser({age: 25, name: "Bob"}));
-    this.store.dispatch(createUser({age: 32, name: "Ann"}));
-    this.store.dispatch(createUser({age: 32, name: "Roberto"}));
-    this.store.dispatch(createUser({age: 32, name: "Mary"}));
-
+    this.store.dispatch(createUser({user: {age: 44, name: "Fernando"}}));
+    this.store.dispatch(createUser({user: {age: 25, name: "Bob"}}));
+    this.store.dispatch(createUser({user: {age: 32, name: "Ann"}}));
+    this.store.dispatch(createUser({user: {age: 32, name: "Roberto"}}));
+    this.store.dispatch(createUser({user: {age: 32, name: "Mary"}}));
 
     this.router.events
       .pipe(filter(event => event instanceof NavigationStart))
