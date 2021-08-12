@@ -1,14 +1,13 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from "@ngrx/store";
-import {AppState} from "../../../store/app.state";
 import {
   selectAllUsers,
   selectCurrentUser,
-  selectUserEntities,
   selectUserEntityIds
 } from "../../../store/user-entity/user-entity.selectors";
 import {loadUserEntitiesEffect} from "../../../store/user-entity/user-entity.actions";
 import {deleteUser, selectUser} from "../../../store/user-entity/user-entity.actions";
+import {UserEntityState} from "../../../store/user-entity/user-entity.reducer";
 
 @Component({
   selector: 'app-user-entity',
@@ -20,7 +19,9 @@ export class UserEntityComponent implements OnInit {
   users$ = this.store.select(selectAllUsers);
   currentUserId?: number;
 
-  constructor(private readonly store: Store<AppState>) { }
+  constructor(
+    private readonly store: Store<UserEntityState>
+  ) { }
 
   ngOnInit(): void {
     this.store.select(selectUserEntityIds).subscribe(value => console.log(value));

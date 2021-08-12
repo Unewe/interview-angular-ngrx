@@ -1,10 +1,7 @@
-import {createSelector} from "@ngrx/store";
-import {AppState} from "../app.state";
-import {userEntityAdapter} from "./user-entity.reducer";
+import {createFeatureSelector, createSelector} from "@ngrx/store";
+import {userEntityAdapter, UserEntityState} from "./user-entity.reducer";
 
-export const selectUsersEntityState = (state: AppState) => {
-  return state.userEntityState
-}
+const getUserEntityState = createFeatureSelector<UserEntityState>('userEntityState');
 
 const {
   selectIds,
@@ -14,24 +11,24 @@ const {
 } = userEntityAdapter.getSelectors();
 
 export const selectUserEntityIds = createSelector(
-  selectUsersEntityState,
+  getUserEntityState,
   selectIds
 );
 
 export const selectUserEntities = createSelector(
-  selectUsersEntityState,
+  getUserEntityState,
   selectEntities
 );
 export const selectAllUsers = createSelector(
-  selectUsersEntityState,
+  getUserEntityState,
   selectAll
 );
 export const selectUserTotal = createSelector(
-  selectUsersEntityState,
+  getUserEntityState,
   selectTotal
 );
 
 export const selectCurrentUser = createSelector(
-  selectUsersEntityState,
+  getUserEntityState,
   (userEntityState) => userEntityState.selectedUserId
 );

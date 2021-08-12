@@ -7,16 +7,14 @@ import {HomeComponent} from './pages/home/home.component';
 import {JsQuestionsComponent} from './pages/js-questions/js-questions.component';
 import {RxjsQuestionsComponent} from './pages/rxjs-questions/rxjs-questions.component';
 import {NgrxQuestionsComponent} from './pages/ngrx-questions/ngrx-questions.component';
-import {StoreModule} from "@ngrx/store";
-import * as fromUser from "./store/users/user.reducer"
 import {StoreDevtoolsModule} from "@ngrx/store-devtools";
 import { UsersComponent } from './components/ngrx/users/users.component';
 import {CommonModule} from '@angular/common';
-import {EffectsModule} from "@ngrx/effects";
-import {UserEffects} from "./store/users/user.effects";
-import * as fromUserEntity from "./store/user-entity/user-entity.reducer";
-import {UserEntityEffects} from "./store/user-entity/user-entity.effects";
 import { UserEntityComponent } from './components/ngrx/user-entity/user-entity.component';
+import {UserStoreModule} from "./store/users/user-store.module";
+import {UserEntityStoreModule} from "./store/user-entity/user-entity-store.module";
+import {StoreModule} from "@ngrx/store";
+import {EffectsModule} from "@ngrx/effects";
 
 @NgModule({
   declarations: [
@@ -32,8 +30,10 @@ import { UserEntityComponent } from './components/ngrx/user-entity/user-entity.c
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({usersState: fromUser.userReducer, userEntityState: fromUserEntity.userEntityReducer}),
-    EffectsModule.forRoot([UserEffects, UserEntityEffects]),
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    UserStoreModule,
+    UserEntityStoreModule,
     StoreDevtoolsModule.instrument({
       maxAge: 25,
       autoPause: true,

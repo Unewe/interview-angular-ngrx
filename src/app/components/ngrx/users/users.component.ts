@@ -2,11 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import {selectCurrentUser, selectUsers} from "../../../store/users/user.selectors";
 import {NavigationStart, Router} from "@angular/router";
 import {Store} from "@ngrx/store";
-import {UserState} from "../../../store/users/user.reducer";
 import {createUser, deleteUser, getUsers, selectUser} from "../../../store/users/user.actions";
 import {filter} from "rxjs/operators";
 import {User} from "../../../models/user";
-import {AppState} from "../../../store/app.state";
+import {UserState} from "../../../store/users/user.reducer";
 
 @Component({
   selector: 'app-users',
@@ -19,7 +18,7 @@ export class UsersComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private readonly store: Store<AppState>
+    private readonly store: Store<UserState>
   ) {}
 
   ngOnInit() {
