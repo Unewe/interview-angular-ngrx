@@ -36,7 +36,7 @@ export const userReducer = createReducer(
       users.splice(users.indexOf(targetUser), 1);
     }
 
-    return {...state, users};
+    return {...state, users, currentUser: undefined};
   }),
   on(UserActions.selectUser, (state, {id}) => {
     const users = [...state.users];

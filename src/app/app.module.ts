@@ -15,6 +15,8 @@ import {UserStoreModule} from "./store/users/user-store.module";
 import {UserEntityStoreModule} from "./store/user-entity/user-entity-store.module";
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
+import {userReducer} from "./store/users/user.reducer";
+import {userEntityReducer} from "./store/user-entity/user-entity.reducer";
 
 @NgModule({
   declarations: [
@@ -30,7 +32,7 @@ import {EffectsModule} from "@ngrx/effects";
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({}),
+    StoreModule.forRoot({userState: userReducer, userEntityState: userEntityReducer}),
     EffectsModule.forRoot([]),
     UserStoreModule,
     UserEntityStoreModule,

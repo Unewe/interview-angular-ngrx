@@ -47,7 +47,7 @@ export const userEntityReducer = createReducer(
     return userEntityAdapter.map(entityMap, state);
   }),
   on(UserActions.deleteUser, (state, { id }) => {
-    return userEntityAdapter.removeOne(id, state);
+    return userEntityAdapter.removeOne(id, {...state, selectedUserId: undefined});
   }),
   on(UserActions.deleteUsers, (state, { ids }) => {
     return userEntityAdapter.removeMany(ids, state);
