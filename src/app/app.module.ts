@@ -15,8 +15,9 @@ import {UserStoreModule} from "./store/users/user-store.module";
 import {UserEntityStoreModule} from "./store/user-entity/user-entity-store.module";
 import {StoreModule} from "@ngrx/store";
 import {EffectsModule} from "@ngrx/effects";
-import {userReducer} from "./store/users/user.reducer";
-import {userEntityReducer} from "./store/user-entity/user-entity.reducer";
+import * as fromRoot from "./store/root/root.reducer";
+import {RootEffects} from "./store/root/root.effects";
+import { LoaderComponent } from './components/loader/loader.component';
 
 @NgModule({
   declarations: [
@@ -26,14 +27,15 @@ import {userEntityReducer} from "./store/user-entity/user-entity.reducer";
     RxjsQuestionsComponent,
     NgrxQuestionsComponent,
     UsersComponent,
-    UserEntityComponent
+    UserEntityComponent,
+    LoaderComponent
   ],
   imports: [
     CommonModule,
     BrowserModule,
     AppRoutingModule,
-    StoreModule.forRoot({userState: userReducer, userEntityState: userEntityReducer}),
-    EffectsModule.forRoot([]),
+    StoreModule.forRoot({rootState: fromRoot.rootReducer}),
+    EffectsModule.forRoot([RootEffects]),
     UserStoreModule,
     UserEntityStoreModule,
     StoreDevtoolsModule.instrument({

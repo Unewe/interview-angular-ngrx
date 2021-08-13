@@ -2,6 +2,7 @@
   <ng-container *ngTemplateOutlet="userTemplate; context: user"></ng-container>
 </ng-container>
 
+<ng-container *ngIf="loading$ | async"><app-loader></app-loader></ng-container>
 <button (click)="getUsers()">Get Users</button>
 
 <ng-template #userTemplate let-name="name" let-age="age" let-id="id">

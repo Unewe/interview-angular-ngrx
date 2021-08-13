@@ -4,12 +4,12 @@ import * as UserActions from "./user.actions";
 
 export interface UserState {
   users: ReadonlyArray<User>;
-  currentUser?: User
+  currentUser?: User;
 }
 
 export const initialUserState: UserState = {
   users: new Array<User>(),
-  currentUser: undefined
+  currentUser: undefined,
 }
 
 export const userReducer = createReducer(
@@ -46,5 +46,5 @@ export const userReducer = createReducer(
   on(UserActions.addAllUser, (state, payload) => {
     const users = payload.users.map((value, index) => ({...value, id: state.users.length + index + 1}));
     return {...state, users: [...state.users, ...users]};
-  })
+  }),
 );

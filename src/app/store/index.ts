@@ -1,7 +1,5 @@
-import {UserState} from "./users/user.reducer";
-import {UserEntityState} from "./user-entity/user-entity.reducer";
+import {RootState} from "./root/root.reducer";
 
 export interface RootStore {
-  userState: UserState,
-  userEntityState: UserEntityState
+  rootState: RootState,
 }
